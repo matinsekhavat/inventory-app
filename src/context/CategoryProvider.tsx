@@ -4,6 +4,12 @@ type categoriesType = {
   title: string;
   description: string;
 };
+type ProductViewType = {
+  createdAt: number;
+  title: string;
+  quantity: number;
+  categoryTitle: string;
+};
 
 type CategoryContextType = {
   categories: categoriesType[];
@@ -14,6 +20,15 @@ type CategoryContextType = {
     e: React.ChangeEvent<HTMLInputElement>
   ) => void;
   handleAddCategoryView: () => void;
+  title: string;
+  setTitle: React.Dispatch<React.SetStateAction<string>>;
+  categoryTitle: string;
+  setCategoryTitle: React.Dispatch<React.SetStateAction<string>>;
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+  productView: ProductViewType[];
+  setProductView: React.Dispatch<React.SetStateAction<ProductViewType[]>>;
+  handleAddProductView: () => void;
 };
 
 export const CategoryContext = createContext<CategoryContextType>({
@@ -23,6 +38,15 @@ export const CategoryContext = createContext<CategoryContextType>({
   handleCategoryViewVisibility: () => {},
   handleChangeCategoryViewField: () => {},
   handleAddCategoryView: () => {},
+  title: "",
+  setTitle: () => {},
+  categoryTitle: "",
+  setCategoryTitle: () => {},
+  quantity: 1,
+  setQuantity: () => {},
+  productView: [],
+  setProductView: () => [],
+  handleAddProductView: () => {},
 });
 
 export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -56,6 +80,23 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
     setCategories((prev) => [...prev, categoryViewFields]);
   }
 
+  // ? PRODUCT VIEW
+  const [productView, setProductView] = useState<ProductViewType[] | []>([]);
+
+  const [title, setTitle] = useState<string>("");
+  const [quantity, setQuantity] = useState<number>(1);
+  const [categoryTitle, setCategoryTitle] = useState<string>("");
+
+  function handleAddProductView() {
+    const newProduct = {
+      createdAt: new Date().getTime(),
+      title,
+      quantity,
+      categoryTitle,
+    };
+    setProductView((prev) => [...prev, newProduct]);
+  }
+
   return (
     <CategoryContext.Provider
       value={{
@@ -65,6 +106,15 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
         handleCategoryViewVisibility,
         handleChangeCategoryViewField,
         handleAddCategoryView,
+        title,
+        setTitle,
+        categoryTitle,
+        setCategoryTitle,
+        quantity,
+        setQuantity,
+        productView,
+        setProductView,
+        handleAddProductView,
       }}
     >
       {children}
