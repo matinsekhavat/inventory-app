@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer components {
+  .input-filed {
+    @apply bg-transparent border border-slate-500  px-2 py-3 rounded-xl  focus:border-[3px] focus:border-blue-700 focus:outline-none min-w-16 max-w-64 w-full p-4;
+  }
+}
