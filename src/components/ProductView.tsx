@@ -3,7 +3,7 @@ import React from "react";
 function ProductView() {
   return (
     <div className="text-slate-300 mb-8">
-      <h1 className="text-2xl">Add New Category :</h1>
+      <h1 className="text-2xl">Add New Product</h1>
       <form className="p-4  bg-slate-700 rounded-lg flex flex-col gap-y-4">
         <div>
           <label htmlFor="cat-title" className="block mb-2">
