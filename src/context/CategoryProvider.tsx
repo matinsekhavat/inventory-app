@@ -77,7 +77,13 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
   }
 
   function handleAddCategoryView() {
+    if (!categoryViewFields.description || !categoryViewFields.title)
+      return null;
     setCategories((prev) => [...prev, categoryViewFields]);
+    setCategoryViewFields({
+      title: "",
+      description: "",
+    });
   }
 
   // ? PRODUCT VIEW
@@ -88,6 +94,7 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
   const [categoryTitle, setCategoryTitle] = useState<string>("");
 
   function handleAddProductView() {
+    if (!title || !categoryTitle) return null;
     const newProduct = {
       createdAt: new Date().getTime(),
       title,
@@ -95,6 +102,9 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
       categoryTitle,
     };
     setProductView((prev) => [...prev, newProduct]);
+    setTitle("");
+    setQuantity(1);
+    setCategoryTitle("");
   }
 
   return (

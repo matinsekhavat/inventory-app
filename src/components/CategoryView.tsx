@@ -6,6 +6,7 @@ function CategoryView() {
     handleCategoryViewVisibility,
     handleChangeCategoryViewField,
     isCategoryViewOpen,
+    categoryViewFields,
   } = useCategory();
   return (
     <div className="text-slate-300 mb-8">
@@ -27,6 +28,7 @@ function CategoryView() {
               placeholder="title..."
               name="title"
               onChange={handleChangeCategoryViewField}
+              value={categoryViewFields.title}
             />
           </div>
           <div>
@@ -37,6 +39,7 @@ function CategoryView() {
               placeholder="description..."
               onChange={handleChangeCategoryViewField}
               name="description"
+              value={categoryViewFields.description}
               className=" bg-transparent border border-slate-500 w-full px-2 py-3 rounded-xl  focus:border-[3px] focus:border-blue-700 focus:outline-none min-h-20 max-h-96"
             />
           </div>
