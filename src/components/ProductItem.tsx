@@ -22,7 +22,7 @@ function ProductItem({ product }: ProductItemType) {
         <p>{displayPersianDate(product?.createdAt)}</p>
         <div>{product?.categoryTitle}</div>
         <div className="size-4 rounded-full flex items-center justify-center border border-slate-400 p-3 select-none">
-          1
+          {product.quantity}
         </div>
         <button
           onClick={() => handleDeleteProductItem(product.createdAt)}
