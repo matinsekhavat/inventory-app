@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type categoriesType = {
   title: string;
@@ -52,8 +52,13 @@ export const CategoryContext = createContext<CategoryContextType>({
 export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [categories, setCategories] = useState<categoriesType[] | []>([]);
+  const [categories, setCategories] = useState<categoriesType[]>(
+    JSON.parse(localStorage.getItem("categories") || "[]")
+  );
 
+  useEffect(() => {
+    localStorage.setItem("categories", JSON.stringify(categories));
+  }, [categories]);
   const [categoryViewFields, setCategoryViewFields] = useState<categoriesType>({
     title: "",
     description: "",
@@ -87,7 +92,13 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
   }
 
   // ? PRODUCT VIEW
-  const [productView, setProductView] = useState<ProductViewType[] | []>([]);
+  const [productView, setProductView] = useState<ProductViewType[]>(
+    JSON.parse(localStorage.getItem("productView") || "[]")
+  );
+
+  useEffect(() => {
+    localStorage.setItem("productView", JSON.stringify(productView));
+  }, [productView]);
 
   const [title, setTitle] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
