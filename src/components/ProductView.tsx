@@ -51,11 +51,7 @@ function ProductView() {
           >
             <option value="">please Select Category</option>
             {categories.map((category) => (
-              <option
-                key={category.title}
-                value={category.title}
-                selected={category.title === categoryTitle}
-              >
+              <option key={category.title} value={category.title}>
                 {category.title}
               </option>
             ))}

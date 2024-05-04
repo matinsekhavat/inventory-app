@@ -1,7 +1,7 @@
 import CategoryView from "../components/CategoryView";
 import Header from "../components/Header";
 import MainCategory from "../components/MainCategory";
-import ProductList from "../components/ProductList";
+import ProductOverView from "../components/ProductOverview";
 import ProductView from "../components/ProductView";
 function HomePage() {
   return (
@@ -10,7 +10,7 @@ function HomePage() {
       <MainCategory>
         <CategoryView />
         <ProductView />
-        <ProductList />
+        <ProductOverView />
       </MainCategory>
     </>
   ); //Header //main //categoryView //ProductView //main</>;

@@ -4,7 +4,7 @@ type categoriesType = {
   title: string;
   description: string;
 };
-type ProductViewType = {
+export type ProductViewType = {
   createdAt: number;
   title: string;
   quantity: number;
@@ -122,7 +122,7 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export function useCategory() {
+export function useCategory(): CategoryContextType {
   const context = useContext(CategoryContext);
 
   if (!context) {
